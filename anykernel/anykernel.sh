@@ -3,15 +3,16 @@
 
 ### AnyKernel setup
 # global properties
+ui_print "Verificando instalação"
 properties() { '
-kernel.string=Capybara AOSP GKI 2.0
+kernel.string=Baseado em Capybara AOSP GKI 2.0
 do.devicecheck=0
 do.modules=0
 do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=
-device.name2=
+device.name1=Rodin
+device.name2=rodin
 device.name3=
 device.name4=
 device.name5=
@@ -20,8 +21,9 @@ supported.patchlevels=
 supported.vendorpatchlevels=
 '; } # end properties
 
-
 ### AnyKernel install
+ui_print "Seu dispositivo é compatível"
+ui_print "Preparando flash"
 ## boot shell variables
 block=boot
 is_slot_device=auto
@@ -34,7 +36,7 @@ no_magisk_check=1
 
 kernel_version=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
 
-ui_print "Flashing Capybara AOSP GKI 2.0..."
+ui_print "Flasheando StormBreaker"
 
 # boot install
 if [ -L "/dev/block/bootdevice/by-name/init_boot_a" -o -L "/dev/block/by-name/init_boot_a" ]; then
@@ -44,4 +46,5 @@ else
     dump_boot # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
     write_boot # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
 fi
+
 ## end boot install

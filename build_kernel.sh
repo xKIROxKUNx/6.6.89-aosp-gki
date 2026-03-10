@@ -27,7 +27,7 @@ check_clang() {
 if ! check_clang; then
     echo "No valid Clang found. Installing..."
     echo "1. AOSP r510928"
-    echo "2. Zyc Clang 16.0.6"
+    echo "2. Zyc Clang 23.0"
     read -p "Choose [1-2]: " clang_choice
 
     case "$clang_choice" in
@@ -40,7 +40,7 @@ if ! check_clang; then
             rm -f "$MAIN/$ARCHIVE_NAME"
             ;;
         2)
-            CLANG_URL="https://github.com/ZyCromerZ/Clang/releases/download/16.0.6-20250721-release/Clang-16.0.6-20250721.tar.gz"
+            CLANG_URL="https://github.com/ZyCromerZ/Clang/releases/download/23.0.0git-20260129-release/Clang-23.0.0git-20260129.tar.gz"
             ARCHIVE_NAME="clang.tar.gz"
             mkdir -p "$CLANG_DIR"
             wget -P "$MAIN" "$CLANG_URL" -O "$MAIN/$ARCHIVE_NAME" || exit 1
